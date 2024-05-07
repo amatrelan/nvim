@@ -5,11 +5,9 @@
 -- Primarily focused on configuring the debugger for Go, but can
 -- be extended to other languages as well. That's why it's called
 -- kickstart.nvim and not kitchen-sink.nvim ;)
-
+--- @type LazySpec
 return {
-  -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
-  -- NOTE: And you can specify dependencies as well
   dependencies = {
     -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
@@ -62,6 +60,40 @@ return {
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
+
+    dap.adapters.lldb = {
+      type = 'executable',
+      command = 'lldb-vscode',
+      name = 'lldb',
+    }
+
+    dap.configurations.rust = {
+      {
+        name = 'Rust debug',
+        type = 'lldb',
+        request = 'launch',
+        program = function()
+          vim.fn.jobstart 'cargo build'
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+        end,
+        initCommands = function()
+          local rustc_sysroot = vim.fn.trim(vim.fn.system 'rustc --print sysroot')
+          local script_import = 'command script import "' .. rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py"'
+          local commands_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_commands'
+          local commands = {}
+          local file = io.open(commands_file, 'r')
+          if file then
+            for line in file:lines() do
+              table.insert(commands, line)
+            end
+            file:close()
+          end
+          table.insert(commands, 1, script_import)
+
+          return commands
+        end,
+      },
+    }
 
     -- Install golang specific config
     require('dap-go').setup()
