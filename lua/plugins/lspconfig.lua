@@ -113,8 +113,8 @@ return { -- LSP Configuration & Plugins
       rust_analyzer = {},
       html = {},
       java_language_server = {},
-      pyright = {},
-      ruff = {},
+      basedpyright = {},
+      ruff_lsp = {},
       lua_ls = {
         settings = {
           Lua = {
