@@ -13,8 +13,15 @@ return {
         return vim.fn.executable 'make' == 1
       end,
     },
+    {
+      "ahmedkhalf/project.nvim",
+      config = function()
+        require("project_nvim").setup()
+      end,
+    },
     { 'nvim-telescope/telescope-ui-select.nvim' },
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+
   },
   keys = {
     {
@@ -125,6 +132,13 @@ return {
       end,
       desc = '[F]ind [N]eovim files',
     },
+    {
+      '<leader>fp',
+      function()
+        require('telescope').extensions.projects.projects{}
+      end,
+      desc = '[F]ind [P]rojects',
+    },
   },
   config = function()
     require('telescope').setup {
@@ -137,6 +151,7 @@ return {
 
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
+    pcall(require('telescope').load_extension, 'projects')
 
     local builtin = require 'telescope.builtin'
   end,
