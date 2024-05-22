@@ -108,14 +108,19 @@ return { -- LSP Configuration & Plugins
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
     local servers = {
-      gopls = {},
-      nixd = {},
+      -- js / web
+      tsserver = {},
+      eslint = {},
       html = {},
-      java_language_server = {},
+
+      -- python
       basedpyright = {},
       ruff_lsp = {},
-      taplo = {},
-      marksman = {},
+
+      -- random languages
+      gopls = {},
+      nixd = {},
+      java_language_server = {},
       lua_ls = {
         settings = {
           Lua = {
@@ -125,6 +130,10 @@ return { -- LSP Configuration & Plugins
           },
         },
       },
+
+      -- random non-programming
+      taplo = {},
+      marksman = {},
     }
 
     for k, v in pairs(servers) do
