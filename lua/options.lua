@@ -1,3 +1,8 @@
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ','
+
+vim.g.have_nerd_font = true
+
 local indentwidth = 2
 vim.opt.tabstop = indentwidth
 vim.opt.softtabstop = indentwidth

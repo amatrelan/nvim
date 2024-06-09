@@ -2,7 +2,7 @@
 return {
   {
     'NeogitOrg/neogit',
-    branch = 'nightly',
+    -- branch = '*',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'sindrets/diffview.nvim',

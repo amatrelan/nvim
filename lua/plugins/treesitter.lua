@@ -1,8 +1,19 @@
-return { -- Highlight, edit, and navigate code
+--- @type LazySpec
+return {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
   opts = {
-    ensure_installed = { 'bash', 'lua', 'luadoc', 'markdown', 'vimdoc', 'rust', 'python', 'go', 'html' },
+    ensure_installed = {
+      'bash',
+      'go',
+      'html',
+      'lua',
+      'luadoc',
+      'markdown',
+      'python',
+      'rust',
+      'vimdoc',
+    },
     -- Autoinstall languages that are not installed
     auto_install = true,
     highlight = {

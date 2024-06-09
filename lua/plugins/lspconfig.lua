@@ -1,14 +1,10 @@
 --- @type LazySpec
 return { -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
-  event = 'BufEnter',
+  event = { 'BufNewFile', 'BufReadPre' },
   dependencies = {
     { 'j-hui/fidget.nvim', opts = {} },
-
-    {
-      'folke/neodev.nvim',
-      opts = {},
-    },
+    { 'folke/neodev.nvim', opts = {} },
   },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -65,26 +61,27 @@ return { -- LSP Configuration & Plugins
         --
         -- When you move your cursor, the highlights will be cleared (the second autocommand).
         local client = vim.lsp.get_client_by_id(event.data.client_id)
-        if client and client.server_capabilities.documentHighlightProvider then
-          local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
-          vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-            buffer = event.buf,
-            group = highlight_augroup,
-            callback = vim.lsp.buf.document_highlight,
-          })
-
-          vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-            buffer = event.buf,
-            group = highlight_augroup,
-            callback = vim.lsp.buf.clear_references,
-          })
-        end
+        -- if client and client.server_capabilities.documentHighlightProvider then
+        --   local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+        --   vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+        --     buffer = event.buf,
+        --     group = highlight_augroup,
+        --     callback = vim.lsp.buf.document_highlight,
+        --   })
+        --
+        --   vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+        --     buffer = event.buf,
+        --     group = highlight_augroup,
+        --     callback = vim.lsp.buf.clear_references,
+        --   })
+        -- end
 
         -- The following autocommand is used to enable inlay hints in your
         -- code, if the language server you are using supports them
         --
         -- This may be unwanted, since they displace some of your code
         if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+          vim.lsp.inlay_hint.enable(true)
           map('<leader>ch', function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
           end, '[C]ode Inlay [H]ints')
@@ -96,7 +93,7 @@ return { -- LSP Configuration & Plugins
       group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
       callback = function(event)
         vim.lsp.buf.clear_references()
-        vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event.buf }
+        -- vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event.buf }
       end,
     })
 
@@ -108,16 +105,12 @@ return { -- LSP Configuration & Plugins
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
     local servers = {
-      -- js / web
       tsserver = {},
       eslint = {},
       html = {},
-
-      -- python
       basedpyright = {},
       ruff_lsp = {},
-
-      -- random languages
+      -- rust_analyzer = {},
       gopls = {},
       nixd = {},
       java_language_server = {},
@@ -134,6 +127,7 @@ return { -- LSP Configuration & Plugins
       -- random non-programming
       taplo = {},
       marksman = {},
+      ltex = {},
     }
 
     for k, v in pairs(servers) do
