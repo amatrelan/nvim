@@ -13,7 +13,7 @@ return {
 
   keys = {
     {
-      '<leader>tr',
+      '<localleader>tr',
       function()
         require('neotest').run.run()
         require('neotest').summary.open()
@@ -21,28 +21,28 @@ return {
       desc = '[R]un',
     },
     {
-      '<leader>tR',
+      '<localleader>tR',
       function()
-        require('neotest').run.run(vim.fn.expand '%')
+        require('neotest').run.run(vim.fn.expand('%'))
       end,
       desc = '[R]un current file',
     },
     {
-      '<leader>td',
+      '<localleader>td',
       function()
-        require('neotest').run.run { strategy = 'dap' }
+        require('neotest').run.run({ strategy = 'dap' })
       end,
       desc = '[R]un /w dap',
     },
     {
-      '<leader>ts',
+      '<localleader>ts',
       function()
         require('neotest').summary.toggle()
       end,
       desc = '[S]ummary',
     },
     {
-      '<leader>tw',
+      '<localleader>tw',
       function()
         require('neotest').watch.toggle()
       end,
@@ -51,7 +51,7 @@ return {
   },
 
   config = function()
-    local neotest_ns = vim.api.nvim_create_namespace 'neotest'
+    local neotest_ns = vim.api.nvim_create_namespace('neotest')
     vim.diagnostic.config({
       virtual_text = {
         format = function(diagnostic)
@@ -61,12 +61,12 @@ return {
       },
     }, neotest_ns)
 
-    require('neotest').setup {
+    require('neotest').setup({
       adapters = {
-        require 'rustaceanvim.neotest',
-        require 'neotest-python',
-        require 'neotest-go',
+        require('rustaceanvim.neotest'),
+        require('neotest-python'),
+        require('neotest-go'),
       },
-    }
+    })
   end,
 }

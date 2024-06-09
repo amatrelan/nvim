@@ -10,18 +10,17 @@ return {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
       cond = function()
-        return vim.fn.executable 'make' == 1
+        return vim.fn.executable('make') == 1
       end,
     },
     {
-      "ahmedkhalf/project.nvim",
+      'ahmedkhalf/project.nvim',
       config = function()
-        require("project_nvim").setup()
+        require('project_nvim').setup()
       end,
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-
   },
   keys = {
     {
@@ -29,49 +28,42 @@ return {
       function()
         require('telescope.builtin').help_tags()
       end,
-      desc = '[F]ind [H]elp',
-    },
-    {
-      '<leader>fk',
-      function()
-        require('telescope.builtin').find_keymaps()
-      end,
-      desc = '[F]ind [k]eymaps',
+      desc = '[H]elp',
     },
     {
       '<leader>fh',
       function()
         require('telescope.builtin').help_tags()
       end,
-      desc = '[F]ind [H]elp',
+      desc = '[H]elp',
     },
     {
       '<leader>fk',
       function()
         require('telescope.builtin').keymaps()
       end,
-      desc = '[F]ind [K]eymaps',
+      desc = '[k]eymaps',
     },
     {
       '<leader>ff',
       function()
         require('telescope.builtin').find_files()
       end,
-      desc = '[F]ind [F]iles',
+      desc = '[F]iles',
     },
     {
       '<leader>fs',
       function()
         require('telescope.builtin').builtin()
       end,
-      desc = '[F]ind [S]elect Telescope',
+      desc = '[S]elect Telescope',
     },
     {
       '<leader>fw',
       function()
         require('telescope.builtin').grep_string()
       end,
-      desc = '[F]ind current [W]ord',
+      desc = 'current [W]ord',
     },
     {
       '<leader>fg',
@@ -85,21 +77,21 @@ return {
       function()
         require('telescope.builtin').diagnostics()
       end,
-      desc = '[F]ind [D]iagnostics',
+      desc = '[D]iagnostics',
     },
     {
       '<leader>fr',
       function()
         require('telescope.builtin').resume()
       end,
-      desc = '[F]ind [R]esume',
+      desc = '[R]esume',
     },
     {
       '<leader>f.',
       function()
         require('telescope.builtin').oldfiles()
       end,
-      desc = '[F]ind Recent Files ("." for repeat)',
+      desc = 'Recent Files ("." for repeat)',
     },
     {
       '<leader>fm',
@@ -118,41 +110,39 @@ return {
     {
       '<leader>/',
       function()
-        require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+        require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
           winblend = 10,
           previewer = false,
-        })
+        }))
       end,
       desc = '[/] Fuzzily search in current buffer',
     },
     {
       '<leader>fn',
       function()
-        require('telescope.builtin').find_files { cwd = vim.fn.stdpath 'config' }
+        require('telescope.builtin').find_files({ cwd = vim.fn.stdpath('config') })
       end,
-      desc = '[F]ind [N]eovim files',
+      desc = '[N]eovim files',
     },
     {
       '<leader>fp',
       function()
-        require('telescope').extensions.projects.projects{}
+        require('telescope').extensions.projects.projects({})
       end,
       desc = '[F]ind [P]rojects',
     },
   },
   config = function()
-    require('telescope').setup {
+    require('telescope').setup({
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
         },
       },
-    }
+    })
 
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
     pcall(require('telescope').load_extension, 'projects')
-
-    local builtin = require 'telescope.builtin'
   end,
 }

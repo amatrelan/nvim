@@ -25,7 +25,7 @@ return {
       {
         event = 'file_opened',
         handler = function(_file_path)
-          require('neo-tree.command').execute { action = 'close' }
+          require('neo-tree.command').execute({ action = 'close' })
         end,
       },
     },

@@ -1,10 +1,3 @@
--- debug.lua
---
--- Shows how to use the DAP plugin to debug your code.
---
--- Primarily focused on configuring the debugger for Go, but can
--- be extended to other languages as well. That's why it's called
--- kickstart.nvim and not kitchen-sink.nvim ;)
 --- @type LazySpec
 return {
   'mfussenegger/nvim-dap',
@@ -22,50 +15,63 @@ return {
       function()
         require('dap').step_into()
       end,
-      'DAP: Step Into',
+      desc = 'DAP: Step Into',
     },
     {
       '<F2>',
       function()
         require('dap').step_over()
       end,
-      'DAP: Step Over',
+      desc = 'DAP: Step Over',
     },
     {
       '<F3>',
       function()
         require('dap').step_out()
       end,
-      'DAP: Step Out',
+      desc = 'DAP: Step Out',
     },
     {
       '<F5>',
       function()
         require('dap').continue()
       end,
-      'DAP: Continue',
+      desc = 'DAP: Continue',
+    },
+    {
+      '<localleader>dc',
+      function()
+        require('dap').continue()
+      end,
+      desc = 'DAP: Continue',
     },
     {
       '<F7>',
       function()
         require('dapui').toggle()
       end,
-      'DAPui: Toggle',
+      desc = 'DAPui: Toggle',
+    },
+    {
+      '<localleader>db',
+      function()
+        require('dap').toggle_breakpoint()
+      end,
+      desc = 'DAP: Toggle Brekpoint',
+    },
+    {
+      '<localleader>dB',
+      function()
+        require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))
+      end,
+      desc = 'DAP: Set Conditional Breakpoint',
     },
   },
   config = function()
-    local dap = require 'dap'
-    local dapui = require 'dapui'
+    local dap = require('dap')
+    local dapui = require('dapui')
 
-    vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<leader>dB', function()
-      dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-    end, { desc = 'Debug: Set Breakpoint' })
-
-    -- Dap UI setup
-    -- For more information, see |:help nvim-dap-ui|
-    dapui.setup {}
-
+    dapui.setup()
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
@@ -79,7 +85,7 @@ return {
     }
 
     dap.adapters.nlua = function(callback, config)
-      callback { type = 'server', host = config.host or '127.0.0.1', port = config.port or 8086 }
+      callback({ type = 'server', host = config.host or '127.0.0.1', port = config.port or 8086 })
     end
 
     -- Install golang specific config

@@ -4,7 +4,7 @@ return { -- Collection of various small independent plugins/modules
   config = function()
     -- Visual indent line, gotta use python at work so this is pretty much
     -- must have, also yml...
-    require('mini.indentscope').setup {}
+    require('mini.indentscope').setup({})
 
     -- Better Around/Inside textobjects
     --
@@ -12,7 +12,7 @@ return { -- Collection of various small independent plugins/modules
     --  - va)  - [V]isually select [A]round [)]paren
     --  - yinq - [Y]ank [I]nside [N]ext [']quote
     --  - ci'  - [C]hange [I]nside [']quote
-    require('mini.ai').setup { n_lines = 500 }
+    require('mini.ai').setup({ n_lines = 500 })
 
     -- Add/delete/replace surroundings (brackets, quotes, etc.)
     --
@@ -23,8 +23,8 @@ return { -- Collection of various small independent plugins/modules
 
     require('mini.comment').setup()
 
-    local statusline = require 'mini.statusline'
-    statusline.setup { use_icons = vim.g.have_nerd_font }
+    local statusline = require('mini.statusline')
+    statusline.setup({ use_icons = vim.g.have_nerd_font })
 
     ---@diagnostic disable-next-line: duplicate-set-field
     statusline.section_location = function()
