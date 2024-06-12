@@ -8,6 +8,7 @@ require('lazy').setup({
   },
 
   { import = 'plugins' },
+  { import = 'plugins/languages' },
 }, {
   ui = {
     icons = vim.g.have_nerd_font and {} or {

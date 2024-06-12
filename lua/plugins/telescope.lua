@@ -54,9 +54,16 @@ return {
     {
       '<leader>fs',
       function()
-        require('telescope.builtin').builtin()
+        require('telescope.builtin').lsp_document_symbols()
       end,
-      desc = '[S]elect Telescope',
+      desc = '[S]ymbols',
+    },
+    {
+      '<leader>fS',
+      function()
+        require('telescope.builtin').lsp_workspace_symbols()
+      end,
+      desc = 'Workspace Symbols',
     },
     {
       '<leader>fw',
