@@ -7,9 +7,9 @@ return {
     'antoinemadec/FixCursorHold.nvim',
     'nvim-treesitter/nvim-treesitter',
 
+    'nvim-neotest/neotest-go',
+    'nvim-neotest/neotest-jest',
     'nvim-neotest/neotest-python',
-_   'nvim-neotest/neotest-go',
-_   'nvim-neotest/neotest-jest',
   },
 
   keys = {
