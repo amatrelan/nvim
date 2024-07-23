@@ -68,7 +68,9 @@ return { -- LSP Configuration & Plugins
           },
         },
         eslint = {},
+        jsonls = {},
         gopls = {},
+        golangci_lint_ls = {},
         html = {
           filetypes = {
             'html',

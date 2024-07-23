@@ -8,7 +8,8 @@ return {
     'nvim-treesitter/nvim-treesitter',
 
     'nvim-neotest/neotest-python',
-    'nvim-neotest/neotest-go',
+_   'nvim-neotest/neotest-go',
+_   'nvim-neotest/neotest-jest',
   },
 
   keys = {
@@ -66,6 +67,7 @@ return {
         require('rustaceanvim.neotest'),
         require('neotest-python'),
         require('neotest-go'),
+        require('neotest-jest'),
       },
     })
   end,
