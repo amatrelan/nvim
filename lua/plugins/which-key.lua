@@ -6,19 +6,29 @@ return { -- Useful plugin to show you pending keybinds.
     require('which-key').setup()
 
     -- Document existing key chains
-    require('which-key').register({
-      ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-      ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-      ['<leader>f'] = { name = '[F]ind', _ = 'which_key_ignore' },
-      ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-      ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-      ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-      ['<localleader>d'] = { name = '[D]ebug', _ = 'which_key_ignore' },
-      ['<localleader>t'] = { name = '[T]est', _ = 'which_key_ignore' },
+    require('which-key').add({
+      { '<leader>c', group = 'Code' },
+      { '<leader>d', group = 'Document' },
+      { '<leader>f', group = 'Find' },
+      { '<leader>g', group = 'Git' },
+      { '<leader>t', group = 'Toggle' },
+      { '<leader>w', group = 'Workspace' },
+      { '<leader>o', group = 'Org' },
+      { '<leader>ox', group = 'Time / Effort' },
+      { '<leader>on', group = 'Note' },
+      { '<leader>ol', group = 'Link' },
+      { '<leader>oi', group = 'Insert' },
+      { '<leader>ob', group = 'Tangle' },
+      { '<leader>n', group = 'Notes (org-roam)' },
+      { '<leader>nr', group = 'Roaming' },
+      { '<leader>na', group = 'Alias' },
+      { '<leader>no', group = 'Origin' },
+      { '<leader>nd', group = 'Daily' },
+      { '<localleader>d', group = 'Debug' },
+      { '<localleader>t', group = 'Test' },
+
+      -- visual mode
+      { '<leader>h', desc = 'Git [H]unk', mode = 'v' },
     })
-    -- visual mode
-    require('which-key').register({
-      ['<leader>h'] = { 'Git [H]unk' },
-    }, { mode = 'v' })
   end,
 }

@@ -10,6 +10,7 @@ return {
         config = true,
       },
     },
+    enabled = false,
     lazy = false,
     version = '*',
     config = true,
