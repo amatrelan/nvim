@@ -10,13 +10,6 @@ return {
           'nvim-telescope/telescope.nvim',
         },
       },
-      -- {
-      --   'lukas-reineke/headlines.nvim',
-      --   dependencies = {
-      --     'nvim-treesitter/nvim-treesitter',
-      --   },
-      --   config = true,
-      -- },
     },
     event = 'VeryLazy',
     ft = { 'org' },
