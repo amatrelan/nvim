@@ -28,7 +28,7 @@ return { -- Useful plugin to show you pending keybinds.
       { '<localleader>t', group = 'Test' },
 
       -- visual mode
-      { '<leader>h', desc = 'Git [H]unk', mode = 'v' },
+      { '<leader>h', desc = 'Git Hunk', mode = 'v' },
     })
   end,
 }

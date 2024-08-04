@@ -28,35 +28,28 @@ return {
       function()
         require('telescope.builtin').help_tags()
       end,
-      desc = '[H]elp',
-    },
-    {
-      '<leader>fh',
-      function()
-        require('telescope.builtin').help_tags()
-      end,
-      desc = '[H]elp',
+      desc = 'Help',
     },
     {
       '<leader>fk',
       function()
         require('telescope.builtin').keymaps()
       end,
-      desc = '[k]eymaps',
+      desc = 'Keymaps',
     },
     {
       '<leader>ff',
       function()
         require('telescope.builtin').find_files()
       end,
-      desc = '[F]iles',
+      desc = 'Files',
     },
     {
       '<leader>fs',
       function()
         require('telescope.builtin').lsp_document_symbols()
       end,
-      desc = '[S]ymbols',
+      desc = 'Symbols',
     },
     {
       '<leader>fS',
@@ -70,28 +63,28 @@ return {
       function()
         require('telescope.builtin').grep_string()
       end,
-      desc = 'current [W]ord',
+      desc = 'Current Word',
     },
     {
       '<leader>fg',
       function()
         require('telescope.builtin').live_grep()
       end,
-      desc = '[F]ind by [G]rep',
+      desc = 'Grep',
     },
     {
       '<leader>fd',
       function()
         require('telescope.builtin').diagnostics()
       end,
-      desc = '[D]iagnostics',
+      desc = 'Diagnostics',
     },
     {
       '<leader>fr',
       function()
         require('telescope.builtin').resume()
       end,
-      desc = '[R]esume',
+      desc = 'Resume',
     },
     {
       '<leader>f.',
@@ -105,14 +98,14 @@ return {
       function()
         require('telescope.builtin').marks()
       end,
-      desc = '[/] Fuzzily search in current buffer',
+      desc = 'Find marks',
     },
     {
       '<leader><leader>',
       function()
         require('telescope.builtin').buffers()
       end,
-      desc = '[ ] Find existing buffers',
+      desc = 'Find existing buffers',
     },
     {
       '<leader>/',
@@ -122,21 +115,21 @@ return {
           previewer = false,
         }))
       end,
-      desc = '[/] Fuzzily search in current buffer',
+      desc = '/ Fuzzily search in current buffer',
     },
     {
       '<leader>fn',
       function()
         require('telescope.builtin').find_files({ cwd = vim.fn.stdpath('config') })
       end,
-      desc = '[N]eovim files',
+      desc = 'Neovim files',
     },
     {
       '<leader>fp',
       function()
         require('telescope').extensions.projects.projects({})
       end,
-      desc = '[F]ind [P]rojects',
+      desc = 'Projects',
     },
   },
   config = function()

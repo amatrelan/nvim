@@ -19,35 +19,35 @@ return {
         require('neotest').run.run()
         require('neotest').summary.open()
       end,
-      desc = '[R]un',
+      desc = 'Run',
     },
     {
       '<localleader>tR',
       function()
         require('neotest').run.run(vim.fn.expand('%'))
       end,
-      desc = '[R]un current file',
+      desc = 'Run current file',
     },
     {
       '<localleader>td',
       function()
         require('neotest').run.run({ strategy = 'dap' })
       end,
-      desc = '[R]un /w dap',
+      desc = 'Run /w dap',
     },
     {
       '<localleader>ts',
       function()
         require('neotest').summary.toggle()
       end,
-      desc = '[S]ummary',
+      desc = 'Summary',
     },
     {
       '<localleader>tw',
       function()
         require('neotest').watch.toggle()
       end,
-      desc = '[W]atch',
+      desc = 'Watch',
     },
   },
 
