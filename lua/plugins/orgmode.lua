@@ -67,7 +67,7 @@ return {
               d = {
                 describtion = 'default',
                 title = 'Daily: %<%Y-%m-%d>',
-                template = '** %<%H:%M>\n%?',
+                template = '** %<%H:%M>\n  %?',
                 target = '%<%Y-%m-%d>.org',
               },
             },

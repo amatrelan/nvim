@@ -40,8 +40,9 @@ return { -- LSP Configuration & Plugins
           map('gG', require('telescope.builtin').lsp_type_definitions, 'Type Definition')
           map('<leader>ds', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
           map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
-          map('<localleader>r', vim.lsp.buf.rename, 'Rename')
-          map('<localleader>a', vim.lsp.buf.code_action, 'Code Action')
+          map('<leader>cr', vim.lsp.buf.rename, 'Rename')
+          map('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
+          map('<leader>cl', vim.lsp.codelens.run, 'Code Lens')
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
           map('gD', vim.lsp.buf.declaration, 'Goto Declaration')
 
@@ -51,10 +52,20 @@ return { -- LSP Configuration & Plugins
           --
           -- This may be unwanted, since they displace some of your code
           if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-            -- vim.lsp.inlay_hint.enable(true)
+            -- Default state is true
+            vim.lsp.inlay_hint.enable(true)
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
             end, 'Toggle Inlay Hints')
+          end
+
+          -- Code lens?
+          if vim.lsp.codelens then
+            vim.lsp.codelens.refresh()
+            vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
+              buffer = event.buf,
+              callback = vim.lsp.codelens.refresh,
+            })
           end
         end,
       })
@@ -132,23 +143,23 @@ return { -- LSP Configuration & Plugins
 
     keys = {
       {
-        '<leader>q',
+        '<leader>xx',
         '<cmd>Trouble diagnostics toggle<cr>',
         desc = 'Diagnostics',
       },
       {
-        '<leader>Q',
+        '<leader>xX',
         '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
         desc = 'Buffer Diagnostics',
       },
       {
-        '<leader>ts',
-        '<cmd>Trouble symbols toggle focus=false<cr>',
+        '<leader>cs',
+        '<cmd>Trouble symbols toggle<cr>',
         desc = 'Symbols',
       },
       {
-        '<leader>tl',
-        '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
+        '<leader>cS',
+        '<cmd>Trouble lsp toggle<cr>',
         desc = 'LSP: Def / Ref / etc...',
       },
     },

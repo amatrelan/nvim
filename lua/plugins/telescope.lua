@@ -21,6 +21,12 @@ return {
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+    {
+      'nvim-telescope/telescope-frecency.nvim',
+      config = function()
+        require('telescope').load_extension('frecency')
+      end,
+    },
   },
   keys = {
     {
@@ -40,9 +46,11 @@ return {
     {
       '<leader>ff',
       function()
-        require('telescope.builtin').find_files()
+        require('telescope').extensions.frecency.frecency({
+          workspace = 'CWD',
+        })
       end,
-      desc = 'Files',
+      desc = 'Find Files',
     },
     {
       '<leader>fs',
@@ -68,7 +76,7 @@ return {
     {
       '<leader>fg',
       function()
-        require('telescope.builtin').live_grep()
+        require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown())
       end,
       desc = 'Grep',
     },
@@ -110,10 +118,7 @@ return {
     {
       '<leader>/',
       function()
-        require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
-          winblend = 10,
-          previewer = false,
-        }))
+        require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({}))
       end,
       desc = '/ Fuzzily search in current buffer',
     },
