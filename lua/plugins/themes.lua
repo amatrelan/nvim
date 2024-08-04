@@ -19,9 +19,9 @@ return {
       neotree = true,
       noice = true,
       notify = true,
-      octo = true, -- TODO: Check this plugin
-      overseer = true, -- TODO: Check this plugin
-      markdown = true, -- TODO: Check this plugin
+      octo = true,
+      overseer = true,
+      markdown = true,
       which_key = true,
     },
   },

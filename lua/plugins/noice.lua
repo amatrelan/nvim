@@ -14,10 +14,21 @@ return {
       },
     },
 
+    routes = {
+      filter = {
+        event = 'msg_show',
+        any = {
+          { find = '%d+L, %d+B' },
+          { find = '; after #%d+' },
+          { find = '; before #%d+' },
+        },
+      },
+    },
+
     presets = {
       lsp_doc_border = true,
-      long_message_to_split = true,
       command_palette = true,
+      long_message_to_split = true,
     },
   },
 }
