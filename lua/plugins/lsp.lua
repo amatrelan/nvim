@@ -1,4 +1,4 @@
---- @type LazySpec
+---@type LazySpec
 return { -- LSP Configuration & Plugins
   {
     'neovim/nvim-lspconfig',
@@ -10,6 +10,7 @@ return { -- LSP Configuration & Plugins
         opts = {
           library = {
             { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+            'lazy.nvim',
           },
         },
       },
@@ -60,7 +61,7 @@ return { -- LSP Configuration & Plugins
 
       vim.api.nvim_create_autocmd('LspDetach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
-        callback = function(event)
+        callback = function()
           vim.lsp.buf.clear_references()
         end,
       })
