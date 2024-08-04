@@ -6,49 +6,48 @@ return {
   },
   event = 'VimEnter',
   opts = {
-    theme = 'hyper',
+    theme = 'doom',
 
     config = {
-      disable_move = true,
-
+      -- disable_move = true,
       week_header = {
         enable = true,
       },
-
-      shortcut = {
+      -- header = {},
+      center = {
         {
-          desc = '󰊳 Update',
-          group = '@property',
-          action = 'Lazy update',
-          key = 'u',
+          icon = ' ',
+          desc = 'projects',
+          action = 'Telescope projects',
+          key_format = ' %s',
+          key = 'p',
+          keymap = 'SPC f p',
         },
         {
-          icon = ' ',
-          icon_hl = '@variable',
-          desc = 'Files',
-          group = 'Label',
-          action = 'Telescope find_files',
-          key = 'f',
+          icon = ' ',
+          desc = 'dotfiles',
+          group = 'Number',
+          action = 'Telescope find_files cwd=~/nixos-config',
+          key_format = ' %s',
+          key = 'd',
         },
-        -- {
-        --   desc = ' Apps',
-        --   group = 'DiagnosticHint',
-        --   action = 'Telescope app',
-        --   key = 'a',
-        -- },
         {
-          desc = ' nvim',
+          icon = ' ',
+          desc = 'nvim',
           group = 'variable',
           action = 'Telescope find_files cwd=~/.config/nvim',
+          key_format = ' %s',
           key = 'n',
         },
         {
-          desc = ' dotfiles',
-          group = 'Number',
-          action = 'Telescope find_files cwd=~/nixos-config',
-          key = 'd',
+          icon = '󰊳 ',
+          desc = 'update',
+          action = 'Lazy update',
+          key_format = ' %s',
+          key = 'u',
         },
       },
+      footer = {},
     },
   },
 }

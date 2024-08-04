@@ -4,7 +4,7 @@ return { -- Collection of various small independent plugins/modules
   config = function()
     -- Visual indent line, gotta use python at work so this is pretty much
     -- must have, also yml...
-    require('mini.indentscope').setup({})
+    -- require('mini.indentscope').setup({})
 
     -- Better Around/Inside textobjects
     --

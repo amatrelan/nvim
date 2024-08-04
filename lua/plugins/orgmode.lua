@@ -3,12 +3,20 @@ return {
   {
     'nvim-orgmode/orgmode',
     dependencies = {
+      'akinsho/org-bullets.nvim',
       {
         'nvim-orgmode/telescope-orgmode.nvim',
         dependencies = {
           'nvim-telescope/telescope.nvim',
         },
       },
+      -- {
+      --   'lukas-reineke/headlines.nvim',
+      --   dependencies = {
+      --     'nvim-treesitter/nvim-treesitter',
+      --   },
+      --   config = true,
+      -- },
     },
     event = 'VeryLazy',
     ft = { 'org' },
@@ -19,7 +27,15 @@ return {
         org_default_notes_file = '~/docs/refile.org',
       })
 
-      require('telescope').load_extension('orgmode')
+      local tele = require('telescope')
+      tele.load_extension('orgmode')
+      tele.setup({
+        extensions = {
+          orgmode = {
+            max_depth = 3,
+          },
+        },
+      })
 
       vim.api.nvim_create_autocmd('FileType', {
         pattern = 'org',
@@ -39,6 +55,10 @@ return {
         { desc = 'Find (org) heading' }
       )
     end,
+  },
+  {
+    'akinsho/org-bullets.nvim',
+    opts = {},
   },
   {
     'chipsenkbeil/org-roam.nvim',

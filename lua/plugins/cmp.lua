@@ -26,6 +26,7 @@ return { -- Autocompletion
     'saadparwaiz1/cmp_luasnip',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
+    'petertriho/cmp-git',
   },
   config = function()
     -- See `:help cmp`
@@ -72,6 +73,7 @@ return { -- Autocompletion
         { name = 'luasnip' },
         { name = 'path' },
         { name = 'crates' },
+        { name = 'cmp-git' },
       },
     })
   end,

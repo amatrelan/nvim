@@ -4,8 +4,10 @@ return { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     event = { 'BufNewFile', 'BufReadPre' },
     dependencies = {
-      -- { 'j-hui/fidget.nvim', opts = {} },
-      { 'folke/neodev.nvim', opts = {} },
+      {
+        'folke/neodev.nvim',
+        opts = {},
+      },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
