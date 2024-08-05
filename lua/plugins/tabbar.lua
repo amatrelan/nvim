@@ -33,32 +33,32 @@ return {
     },
     {
       '<leader>bd',
-      '<cmd>BufferClose<cmd>',
+      '<cmd>BufferClose<cr>',
       desc = 'Buffer Close',
     },
     {
       '<leader>bsn',
-      '<cmd>BufferOrderByName<cmd>',
+      '<cmd>BufferOrderByName<cr>',
       desc = 'Buffer order by Name',
     },
     {
       '<leader>bsd',
-      '<cmd>BufferOrderByDirectory<cmd>',
+      '<cmd>BufferOrderByDirectory<cr>',
       desc = 'Buffer order by Directory',
     },
     {
       '<leader>bsl',
-      '<cmd>BufferOrderByLanguage<cmd>',
+      '<cmd>BufferOrderByLanguage<cr>',
       desc = 'Buffer order by Language',
     },
     {
       '<leader>bsw',
-      '<cmd>BufferOrderByWindowNumber<cmd>',
+      '<cmd>BufferOrderByWindowNumber<cr>',
       desc = 'Buffer order by Window Number',
     },
     {
       '<leader>bsb',
-      '<cmd>BufferOrderByBufferNumber<cmd>',
+      '<cmd>BufferOrderByBufferNumber<cr>',
       desc = 'Buffer order by Buffer Number',
     },
   },
