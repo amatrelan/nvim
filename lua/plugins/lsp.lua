@@ -60,7 +60,7 @@ return { -- LSP Configuration & Plugins
           end
 
           -- Code lens?
-          if vim.lsp.codelens then
+          if vim.lsp.codelens and client.server_capabilities.code_lens then
             vim.lsp.codelens.refresh()
             vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
               buffer = event.buf,
