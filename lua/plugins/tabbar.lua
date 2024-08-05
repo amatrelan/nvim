@@ -14,7 +14,19 @@ return {
       mode = 'n',
     },
     {
+      '<leader>bn',
+      '<cmd>BufferNext<cr>',
+      desc = 'Next Buffer',
+      mode = 'n',
+    },
+    {
       '<S-TAB>',
+      '<cmd>BufferPrevious<cr>',
+      desc = 'Previous Buffer',
+      mode = 'n',
+    },
+    {
+      '<leader>bp',
       '<cmd>BufferPrevious<cr>',
       desc = 'Previous Buffer',
       mode = 'n',

@@ -15,16 +15,6 @@ return { -- LSP Configuration & Plugins
         },
       },
       { 'Bilal2453/luvit-meta', lazy = true },
-      {
-        'hrsh7th/nvim-cmp',
-        opts = function(_, opts)
-          opts.sources = opts.sources or {}
-          table.insert(opts.sources, {
-            name = 'lazydev',
-            group_index = 0,
-          })
-        end,
-      },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -41,7 +31,9 @@ return { -- LSP Configuration & Plugins
           map('<leader>ds', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
           map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
           map('<leader>cr', vim.lsp.buf.rename, 'Rename')
+          map('<localleader>r', vim.lsp.buf.rename, 'Rename')
           map('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
+          map('<localleader>a', vim.lsp.buf.code_action, 'Code Action')
           map('<leader>cl', vim.lsp.codelens.run, 'Code Lens')
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
           map('gD', vim.lsp.buf.declaration, 'Goto Declaration')
