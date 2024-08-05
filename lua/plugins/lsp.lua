@@ -5,16 +5,9 @@ return { -- LSP Configuration & Plugins
     event = { 'BufNewFile', 'BufReadPre' },
     dependencies = {
       {
-        'folke/lazydev.nvim',
-        ft = 'lua',
-        opts = {
-          library = {
-            { path = 'luvit-meta/library', words = { 'vim%.uv' } },
-            'lazy.nvim',
-          },
-        },
+        'SmiteshP/nvim-navic',
+        lazy = true,
       },
-      { 'Bilal2453/luvit-meta', lazy = true },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -39,12 +32,12 @@ return { -- LSP Configuration & Plugins
           map('gD', vim.lsp.buf.declaration, 'Goto Declaration')
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
+
           -- The following autocommand is used to enable inlay hints in your
           -- code, if the language server you are using supports them
           --
           -- This may be unwanted, since they displace some of your code
           if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-            -- Default state is true
             vim.lsp.inlay_hint.enable(true)
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
@@ -118,42 +111,20 @@ return { -- LSP Configuration & Plugins
         -- ltex = {},
       }
 
+      local on_attach = function(client, bufnr)
+        local navic = require('nvim-navic')
+        if client.server_capabilities.documentSymbolProvider then
+          navic.attach(client, bufnr)
+        end
+      end
+
       for k, v in pairs(servers) do
         local server = v or {}
         server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+        server.on_attach = on_attach
+
         require('lspconfig')[k].setup(server)
       end
     end,
-  },
-  {
-    'folke/trouble.nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    cmd = 'Trouble',
-    opts = {},
-
-    keys = {
-      {
-        '<leader>xx',
-        '<cmd>Trouble diagnostics toggle<cr>',
-        desc = 'Diagnostics',
-      },
-      {
-        '<leader>xX',
-        '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
-        desc = 'Buffer Diagnostics',
-      },
-      {
-        '<leader>cs',
-        '<cmd>Trouble symbols toggle<cr>',
-        desc = 'Symbols',
-      },
-      {
-        '<leader>cS',
-        '<cmd>Trouble lsp toggle<cr>',
-        desc = 'LSP: Def / Ref / etc...',
-      },
-    },
   },
 }
