@@ -18,15 +18,6 @@ return {
   },
   {
     'stevearc/conform.nvim',
-    opts = {
-      formatters_by_ft = {
-        javascript = { 'eslintd' },
-        typesctript = { 'eslintd' },
-      },
-    },
-  },
-  {
-    'stevearc/conform.nvim',
     keys = {
       {
         '<localleader>f',
@@ -36,6 +27,13 @@ return {
         desc = 'Format',
       },
     },
+    opts = {
+      formatters_by_ft = {
+        javascript = { 'eslint_d' },
+        typesctript = { 'eslint_d' },
+        nix = { 'alejandra' },
+      },
+    },
   },
   {
     'neovim/nvim-lspconfig',
@@ -43,10 +41,27 @@ return {
       local keys = require('lazyvim.plugins.lsp.keymaps').get()
       keys[#keys + 1] = { '<localleader>a', vim.lsp.buf.code_action, desc = 'Code Action' }
       keys[#keys + 1] = { '<localleader>l', vim.lsp.codelens.run, desc = 'Code Lens' }
-
       opts.codelens.enabled = true
     end,
   },
+  {
+    'neovim/nvim-lspconfig',
+    opts = {
+      servers = { eslint = {} },
+      setup = {
+        eslint = function()
+          require('lazyvim.util').lsp.on_attach(function(client)
+            if client.name == 'eslint' then
+              client.server_capabilities.documentFormattingProvider = true
+            elseif client.name == 'tsserver' then
+              client.server_capabilities.documentFormattingProvider = false
+            end
+          end)
+        end,
+      },
+    },
+  },
+
   {
     'hrsh7th/nvim-cmp',
     ---@param opts cmp.ConfigSchema
@@ -87,14 +102,5 @@ return {
         end, { 'i', 's' }),
       })
     end,
-  },
-  {
-    'stevearc/conform.nvim',
-    optional = true,
-    opts = {
-      formatters_by_ft = {
-        nix = { 'alejandra' },
-      },
-    },
   },
 }

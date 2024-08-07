@@ -36,7 +36,7 @@ return {
         -- Setup orgmode
         local wk = require('which-key')
         wk.add({
-          { '<leader>n', group = 'note' },
+          { '<leader>n',  group = 'note' },
           { '<leader>nd', group = 'dailies' },
           { '<leader>no', group = 'origin' },
         })
@@ -44,8 +44,8 @@ return {
           pattern = 'org',
           callback = function()
             wk.add({
-              { '<localleader>o', group = 'org-mode' },
-              { '<localleader>n', group = 'roam' },
+              { '<localleader>o',  group = 'org-mode' },
+              { '<localleader>n',  group = 'roam' },
               { '<localleader>ob', group = 'build/tangle' },
               { '<localleader>od', group = 'time' },
               { '<localleader>oi', group = 'insert' },
@@ -168,18 +168,18 @@ return {
     },
     version = '*',
     keys = {
-      { '<leader>njn', '<cmd>Neorg journal today<cr>', desc = 'Today' },
-      { '<leader>njt', '<cmd>Neorg journal tomorrow<cr>', desc = 'Tomorrow' },
+      { '<leader>njn', '<cmd>Neorg journal today<cr>',     desc = 'Today' },
+      { '<leader>njt', '<cmd>Neorg journal tomorrow<cr>',  desc = 'Tomorrow' },
       { '<leader>njp', '<cmd>Neorg journal yesterday<cr>', desc = 'Yesterday' },
-      { '<leader>njc', '<cmd>Neorg journal custom<cr>', desc = 'Custom Date' },
-      { '<leader>njt', '<cmd>Neorg journal toc<cr>', desc = 'TOC' },
-      { '<leader>nn', '<Plug>(neorg.dirman.new-note)', desc = 'Create new Note' },
+      { '<leader>njc', '<cmd>Neorg journal custom<cr>',    desc = 'Custom Date' },
+      { '<leader>njt', '<cmd>Neorg journal toc<cr>',       desc = 'TOC' },
+      { '<leader>nn',  '<Plug>(neorg.dirman.new-note)',    desc = 'Create new Note' },
     },
     config = function()
       local wk = require('which-key')
 
       wk.add({
-        { '<leader>n', group = 'note' },
+        { '<leader>n',  group = 'note' },
         { '<leader>nj', group = 'journal' },
       })
 
@@ -191,7 +191,7 @@ return {
             { '<localleader>i', group = 'insert' },
             { '<localleader>l', group = 'list' },
             { '<localleader>t', group = 'task' },
-            { '<M-Space>', '<Plug>(neorg.qol.todo-items.todo.task-cycle)', desc = 'Cycle Task' },
+            { '<M-Space>',      '<Plug>(neorg.qol.todo-items.todo.task-cycle)', desc = 'Cycle Task' },
           }, { mode = 'n' })
         end,
       })
