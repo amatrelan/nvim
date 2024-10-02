@@ -24,4 +24,7 @@ return {
   { import = 'lazyvim.plugins.extras.util.octo' },
   { import = 'lazyvim.plugins.extras.util.project' },
   { import = 'lazyvim.plugins.extras.util.rest' },
+
+  { import = 'lazyvim.plugins.extras.coding.copilot-chat' },
+  { import = 'lazyvim.plugins.extras.coding.copilot' },
 }
