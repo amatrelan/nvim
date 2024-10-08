@@ -1,22 +1,5 @@
 return {
   {
-    'williamboman/mason.nvim',
-    enabled = function()
-      -- I have no clue how I can do this correct way.
-      -- Well this works and is enough for me.
-      local exit_code = 0
-      local on_exit = function(obj)
-        exit_code = obj.code
-      end
-
-      vim.system({ 'rg', '-i', 'nixos', '/etc/os-release' }, { text = true }, on_exit)
-      return exit_code == 1
-    end,
-    opts = {
-      ensure_installed = {},
-    },
-  },
-  {
     'stevearc/conform.nvim',
     keys = {
       {
@@ -32,6 +15,7 @@ return {
         javascript = { 'eslint_d' },
         typesctript = { 'eslint_d' },
         nix = { 'alejandra' },
+        rust = { 'rustfmt' },
       },
     },
   },
@@ -105,9 +89,12 @@ return {
       })
     end,
   },
-  { 'nvim-neotest/neotest-jest' },
   {
     'nvim-neotest/neotest',
+    dependencies = {
+      'nvim-neotest/neotest-jest',
+    },
+
     opts = { adapters = { 'neotest-jest' } },
   },
 }
