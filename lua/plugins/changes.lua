@@ -13,7 +13,7 @@ return {
     opts = {
       formatters_by_ft = {
         javascript = { 'eslint_d' },
-        typesctript = { 'eslint_d' },
+        typescript = { 'eslint_d' },
         nix = { 'alejandra' },
         rust = { 'rustfmt' },
       },
