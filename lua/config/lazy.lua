@@ -28,7 +28,8 @@ require('lazy').setup({
     { import = 'lazyvim.plugins.extras.dap.core' },
     { import = 'lazyvim.plugins.extras.dap.nlua' },
 
-    { import = 'lazyvim.plugins.extras.editor.overseer' },
+    -- { import = 'lazyvim.plugins.extras.editor.overseer' },
+    { import = 'lazyvim.plugins.extras.editor.navic' },
     { import = 'lazyvim.plugins.extras.editor.telescope' },
 
     { import = 'lazyvim.plugins.extras.lang.docker' },
@@ -43,7 +44,7 @@ require('lazy').setup({
     { import = 'lazyvim.plugins.extras.lang.typescript' },
     { import = 'lazyvim.plugins.extras.lang.yaml' },
 
-    { import = 'lazyvim.plugins.extras.linting.eslint' },
+    -- { import = 'lazyvim.plugins.extras.linting.eslint' },
 
     { import = 'lazyvim.plugins.extras.test.core' },
 

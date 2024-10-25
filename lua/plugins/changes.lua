@@ -12,8 +12,8 @@ return {
     },
     opts = {
       formatters_by_ft = {
-        javascript = { 'eslint_d' },
-        typescript = { 'eslint_d' },
+        javascript = { 'biome' },
+        typescript = { 'biome' },
         nix = { 'alejandra' },
         rust = { 'rustfmt' },
       },
@@ -46,12 +46,21 @@ return {
   {
     'neovim/nvim-lspconfig',
     opts = {
-      servers = { eslint = {} },
+      servers = {
+        biome = {},
+        typos_lsp = {},
+      },
+    },
+  },
+  {
+    'neovim/nvim-lspconfig',
+    opts = {
+      servers = { eslint = {}, biome = {} },
       setup = {
         eslint = function()
           require('lazyvim.util').lsp.on_attach(function(client)
             if client.name == 'eslint' then
-              client.server_capabilities.documentFormattingProvider = true
+              client.server_capabilities.documentFormattingProvider = false
             elseif client.name == 'tsserver' then
               client.server_capabilities.documentFormattingProvider = false
             end
