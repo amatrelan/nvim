@@ -16,6 +16,7 @@ return {
         typescript = { 'biome' },
         nix = { 'alejandra' },
         rust = { 'rustfmt' },
+        xml = { 'xmllint' },
       },
     },
   },
@@ -77,12 +78,19 @@ return {
     'nvim-neotest/neotest',
     dependencies = {
       'nvim-neotest/neotest-jest',
-      'nvim-neotest/neotest-go',
+      'fredrikaverpil/neotest-golang',
     },
     opts = {
       adapters = {
         'neotest-jest',
-        'neotest-go',
+        require('neotest-golang')({
+          go_test_args = {
+            '-v',
+            '-race',
+            '-count=1',
+            '-coverprofile=' .. vim.fn.getcwd() .. '/coverage.out',
+          },
+        }),
       },
     },
   },
@@ -165,5 +173,12 @@ return {
       }
     end,
     main = 'lazyvim.util.cmp',
+  },
+  {
+    'andythigpen/nvim-coverage',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    opts = {},
   },
 }
