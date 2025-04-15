@@ -36,7 +36,7 @@ return {
         -- Setup orgmode
         local wk = require('which-key')
         wk.add({
-          { '<leader>n',  group = 'note' },
+          { '<leader>n', group = 'note' },
           { '<leader>nd', group = 'dailies' },
           { '<leader>no', group = 'origin' },
         })
@@ -44,8 +44,8 @@ return {
           pattern = 'org',
           callback = function()
             wk.add({
-              { '<localleader>o',  group = 'org-mode' },
-              { '<localleader>n',  group = 'roam' },
+              { '<localleader>o', group = 'org-mode' },
+              { '<localleader>n', group = 'roam' },
               { '<localleader>ob', group = 'build/tangle' },
               { '<localleader>od', group = 'time' },
               { '<localleader>oi', group = 'insert' },
@@ -155,97 +155,5 @@ return {
         })
       end,
     },
-  },
-
-  -- Ok I try neorg again if it's for me
-  -- I have used org-mode so much that I'm used to it.
-  {
-    'nvim-neorg/neorg',
-    lazy = false,
-    -- enabled = false,
-    dependencies = {
-      { 'folke/zen-mode.nvim' },
-    },
-    version = '*',
-    keys = {
-      { '<leader>njn', '<cmd>Neorg journal today<cr>',     desc = 'Today' },
-      { '<leader>njt', '<cmd>Neorg journal tomorrow<cr>',  desc = 'Tomorrow' },
-      { '<leader>njp', '<cmd>Neorg journal yesterday<cr>', desc = 'Yesterday' },
-      { '<leader>njc', '<cmd>Neorg journal custom<cr>',    desc = 'Custom Date' },
-      { '<leader>njt', '<cmd>Neorg journal toc<cr>',       desc = 'TOC' },
-      { '<leader>nn',  '<Plug>(neorg.dirman.new-note)',    desc = 'Create new Note' },
-    },
-    config = function()
-      local wk = require('which-key')
-
-      wk.add({
-        { '<leader>n',  group = 'note' },
-        { '<leader>nj', group = 'journal' },
-      })
-
-      vim.api.nvim_create_autocmd('Filetype', {
-        pattern = 'norg',
-        callback = function()
-          wk.add({
-            { '<localleader>c', group = 'code' },
-            { '<localleader>i', group = 'insert' },
-            { '<localleader>l', group = 'list' },
-            { '<localleader>t', group = 'task' },
-            { '<M-Space>',      '<Plug>(neorg.qol.todo-items.todo.task-cycle)', desc = 'Cycle Task' },
-          }, { mode = 'n' })
-        end,
-      })
-
-      require('neorg').setup({
-        load = {
-          ['core.defaults'] = {},
-          ['core.journal'] = {
-            config = {
-              strategy = 'flat',
-            },
-          },
-          ['core.concealer'] = {},
-          ['core.dirman'] = {
-            config = {
-              workspaces = {
-                notes = '~/docs',
-              },
-              default_workspace = 'notes',
-            },
-          },
-          ['core.completion'] = {
-            config = {
-              engine = 'nvim-cmp',
-            },
-          },
-          ['core.presenter'] = {
-            config = {
-              zen_mode = 'zen-mode',
-            },
-          },
-          ['core.keybinds'] = {
-            config = {
-              -- default_keybinds = false,
-            },
-          },
-          ['core.export'] = {},
-          ['core.export.markdown'] = {},
-          ['core.esupports.metagen'] = {
-            config = {
-              type = 'auto',
-            },
-          },
-        },
-      })
-
-      vim.wo.foldlevel = 99
-      vim.wo.conceallevel = 2
-    end,
-  },
-  {
-    'hrsh7th/nvim-cmp',
-    opts = function(_, opts)
-      table.insert(opts.sources, { name = 'neorg' })
-    end,
   },
 }
