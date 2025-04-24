@@ -20,19 +20,29 @@ return {
       },
     },
   },
-  -- {
-  --   'nvim-neo-tree/neo-tree.nvim',
-  --   opts = {
-  --     event_handlers = {
-  --       {
-  --         event = 'file_open_requested',
-  --         handler = function()
-  --           require('neo-tree.command').execute({ action = 'close' })
-  --         end,
-  --       },
-  --     },
-  --   },
-  -- },
+  {
+    'snacks.nvim',
+    keys = {
+      {
+        '<leader>N',
+        function()
+          if Snacks.config.picker and Snacks.config.picker.enabled then
+            Snacks.picker.notifications()
+          else
+            Snacks.notifier.show_history()
+          end
+        end,
+        desc = 'Notification History',
+      },
+      {
+        '<leader>un',
+        function()
+          Snacks.notifier.hide()
+        end,
+        desc = 'Dismiss All Notifications',
+      },
+    },
+  },
   {
     'neovim/nvim-lspconfig',
     opts = function(_, opts)
