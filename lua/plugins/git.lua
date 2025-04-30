@@ -3,8 +3,9 @@ return {
     'NeogitOrg/neogit',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'sindrets/diffview.nvim',
-      'nvim-telescope/telescope.nvim',
+      -- 'sindrets/diffview.nvim',
+      -- 'nvim-telescope/telescope.nvim',
+      'ibhagwan/fzf-lua',
     },
     keys = {
       {
@@ -28,5 +29,18 @@ return {
         diffview = true,
       },
     },
+  },
+  {
+    'sindrets/diffview.nvim',
+    keys = {
+      {
+        '<leader>gd',
+        function()
+          require('diffview').open()
+        end,
+        desc = 'Diffview',
+      },
+    },
+    opts = {},
   },
 }

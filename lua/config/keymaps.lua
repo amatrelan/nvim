@@ -5,6 +5,8 @@
 -- vim.keymap.del('n', '<leader>gG')
 -- vim.keymap.del('n', '<leader>gL')
 vim.keymap.del('n', '<leader>n')
+vim.keymap.del('n', '<leader>gc')
+-- vim.keymap.del('n', '<leader>gd')
 
 -- vim.keymap.del('n', '<localleader>nn')
 --

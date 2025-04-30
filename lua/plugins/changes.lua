@@ -41,6 +41,10 @@ return {
         end,
         desc = 'Dismiss All Notifications',
       },
+      {
+        '<leader>gd',
+        false,
+      },
     },
   },
   {
