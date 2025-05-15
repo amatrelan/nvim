@@ -4,32 +4,9 @@
 
 -- vim.keymap.del('n', '<leader>gG')
 -- vim.keymap.del('n', '<leader>gL')
-vim.keymap.del('n', '<leader>n')
-vim.keymap.del('n', '<leader>gc')
+-- vim.keymap.del('n', '<leader>n')
+-- vim.keymap.del('n', '<leader>gc')
+
 -- vim.keymap.del('n', '<leader>gd')
 
 -- vim.keymap.del('n', '<localleader>nn')
---
--- local neorg_leader = '<leader>o'
---
--- vim.keymap.set('n', neorg_leader .. 'n', '<Plug>(neorg.dirman.new-note)', { desc = 'New Note' })
--- vim.keymap.set('n', neorg_leader .. 't', '<cmd>Neorg toc<cr>', { desc = 'Toc' })
---
--- vim.api.nvim_create_autocmd('filetype', {
---   pattern = 'norg',
---
---   callback = function()
---     -- Insert mode
---     vim.keymap.set('i', '<C-d>', '<Plug>(neorg.promo.demote)')
---     vim.keymap.set('i', '<C-t>', '<Plug>(neorg.promo.promote)')
---     vim.keymap.set('i', '<M-CR>', '<Plug>(neorg.itero.next-iteration)')
---     vim.keymap.set('i', '<M-d>', '<Plug>(neorg.tempus.insert-date.insert-mode)')
---
---     -- Normal mode
---     vim.keymap.set('n', '<,', '<Plug>(neorg.promo.demote)')
---     vim.keymap.set('n', '<<', '<Plug>(neorg.promo.demote.nested)')
---     vim.keymap.set('n', '<C-space>', '<Plug>(neorg.qol.todo-items.todo.task-cycle)')
---     vim.keymap.set('n', '<CR>', '<Plug>(neorg.esupports.hop.hop-link)')
---     vim.keymap.set('n', '<CR>', '<Plug>(neorg.esupports.hop.hop-link)')
---   end,
--- })
