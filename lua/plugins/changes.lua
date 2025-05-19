@@ -59,11 +59,26 @@ return {
     end,
   },
   {
+    'mason-org/mason.nvim',
+    opts = { ensure_installed = { 'staticcheck' } },
+  },
+  {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
         biome = {},
         typos_lsp = {},
+        html = {},
+        htmx = {},
+        emmet_language_server = {},
+        gopls = {
+          filetypes = { 'go', 'gomod', 'gowork', 'gotmpl', 'html' },
+          settings = {
+            gopls = {
+              templateExtensions = { 'html' },
+            },
+          },
+        },
       },
     },
   },
