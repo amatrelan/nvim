@@ -103,15 +103,28 @@ return {
       },
     },
   },
+
+  {
+    'vhyrro/luarocks.nvim',
+    lazy = false,
+    opts = {
+      rocks = { 'xml2lua', 'inspect' },
+    },
+  },
   {
     'nvim-neotest/neotest',
     dependencies = {
-      'nvim-neotest/neotest-jest',
-      'fredrikaverpil/neotest-golang',
+      {
+        'arthur944/neotest-bun',
+        'fredrikaverpil/neotest-golang',
+        -- 'nvim-neotest/neotest-jest',
+      },
     },
+    lazy = false,
     opts = {
       adapters = {
-        'neotest-jest',
+        -- 'neotest-jest',
+        'neotest-bun',
         require('neotest-golang')({
           go_test_args = {
             '-v',
