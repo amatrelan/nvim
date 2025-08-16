@@ -162,4 +162,68 @@ return {
       },
     },
   },
+  {
+    'mfussenegger/nvim-lint',
+    event = 'LazyFile',
+    opts = {
+      -- Event to trigger linters
+      events = { 'BufWritePost', 'BufReadPost', 'InsertLeave' },
+      linters_by_ft = {
+        fish = { 'fish' },
+        go = { 'golangcilint' },
+        bash = { 'bash' },
+        -- ["*"] = { "typos" },
+      },
+      ---@type table<string,table>
+      linters = {},
+    },
+  },
+  {
+    'elkowar/yuck.vim',
+  },
+  {
+    'folke/snacks.nvim',
+    keys = {
+      {
+        '<leader>e',
+        function()
+          Snacks.picker.explorer({
+            hidden = true,
+            ignored = false,
+          })
+        end,
+        desc = 'Explorer',
+      },
+      {
+        '<leader>ff',
+        function()
+          Snacks.picker.files({
+            hidden = true,
+            ignored = false,
+          })
+        end,
+        desc = 'Format',
+      },
+      {
+        'gp',
+        function()
+          Snacks.picker.projects({
+            hidden = true,
+            ignored = false,
+          })
+        end,
+        desc = 'Projects',
+      },
+      {
+        '<leader>*',
+        function()
+          Snacks.picker.grep_word({
+            hidden = true,
+            ignored = false,
+          })
+        end,
+        desc = 'Grep Word',
+      },
+    },
+  },
 }

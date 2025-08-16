@@ -3,9 +3,8 @@ return {
     'NeogitOrg/neogit',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      -- 'sindrets/diffview.nvim',
-      -- 'nvim-telescope/telescope.nvim',
-      'ibhagwan/fzf-lua',
+      'sindrets/diffview.nvim',
+      'folke/snacks.nvim',
     },
     keys = {
       {
@@ -15,23 +14,17 @@ return {
         end,
         desc = 'Neogit',
       },
-      {
-        '<leader>gl',
-        function()
-          require('neogit').open({ 'log' })
-        end,
-        desc = 'Neogit Log',
-      },
     },
-    config = true,
     opts = {
       integrations = {
         diffview = true,
+        snacks = true,
       },
     },
   },
   {
     'sindrets/diffview.nvim',
+    cmd = { 'DiffviewOpen', 'DiffviewClose', 'DiffviewToggleFiles', 'DiffviewFocusFiles' },
     keys = {
       {
         '<leader>gd',
@@ -41,6 +34,5 @@ return {
         desc = 'Diffview',
       },
     },
-    opts = {},
   },
 }
