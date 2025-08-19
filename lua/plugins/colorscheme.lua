@@ -1,7 +1,7 @@
 return {
   {
     'rebelot/kanagawa.nvim',
-    -- enabled = false,
+    enabled = false,
     dependencies = {
       {
         'LazyVim/LazyVim',

@@ -6,6 +6,6 @@ vim.g.maplocalleader = ','
 
 vim.g.lazyvim_python_lsp = 'pyright'
 vim.g.lazyvim_python_ruff = 'ruff'
-vim.g.autoformat = 'false'
+vim.g.autoformat = false
 
 vim.g.snacks_animate = false

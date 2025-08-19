@@ -29,7 +29,7 @@ return {
       {
         '<leader>gd',
         function()
-          require('diffview').open()
+          require('diffview').open({})
         end,
         desc = 'Diffview',
       },
