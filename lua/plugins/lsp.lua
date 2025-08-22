@@ -19,6 +19,13 @@ return {
         html = {},
         htmx = {},
         emmet_language_server = {},
+        omnisharp = {
+          settings = {
+            FormattingOptions = {
+              EnableEditorConfigSupport = false,
+            },
+          },
+        },
         gopls = {
           filetypes = {
             'go',
