@@ -17,7 +17,7 @@ return {
         biome = {},
         typos_lsp = {},
         html = {},
-        htmx = {},
+        -- htmx = {},
         emmet_language_server = {},
         omnisharp = {
           settings = {
