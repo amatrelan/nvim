@@ -36,7 +36,7 @@ return {
           { org_leader, group = 'org-mode' },
           { org_leader .. 'd', group = 'dailies' },
           { org_leader .. 'o', group = 'origin' },
-          { org_leader .. 'n', group = 'notes' },
+          { '<leader>' .. 'n', group = 'notes' },
           {
             org_leader .. 'f',
             function()

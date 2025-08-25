@@ -25,6 +25,7 @@ return {
   {
     'snacks.nvim',
     keys = {
+      {"<leader>n", false},
       {
         '<leader>N',
         function()
