@@ -30,7 +30,7 @@ return {
       config = function()
         -- Setup orgmode
         local org_leader = '<leader>o'
-        local org_localleader = '<localleader>o'
+        local org_localleader = '<localleader>'
         local wk = require('which-key')
         wk.add({
           { org_leader, group = 'org-mode' },
