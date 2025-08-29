@@ -36,7 +36,8 @@ return {
           { org_leader, group = 'org-mode' },
           { org_leader .. 'd', group = 'dailies' },
           { org_leader .. 'o', group = 'origin' },
-          { '<leader>' .. 'n', group = 'notes' },
+          { org_leader .. 'n', group = 'notes' },
+          { '<localleader>' .. 'i', group = 'insert' },
           {
             org_leader .. 'f',
             function()
@@ -127,8 +128,8 @@ return {
               org_store_link = org_localleader .. 'ls',
               org_time_stamp = org_localleader .. 'i.',
               org_time_stamp_inactive = org_localleader .. 'i!',
-              org_todo = 'cot',
-              org_todo_prev = 'coT',
+              org_todo = org_localleader .. 'it',
+              org_todo_prev = org_localleader .. 'iT',
               org_toggle_archive_tag = org_localleader .. 'A',
               org_toggle_checkbox = '<M-Space>',
               org_toggle_heading = org_localleader .. '*',
