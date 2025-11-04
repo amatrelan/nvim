@@ -1,14 +1,14 @@
 return {
   {
     'neovim/nvim-lspconfig',
-    opts = function(_, opts)
-      local keys = require('lazyvim.plugins.lsp.keymaps').get()
-      keys[#keys + 1] = { '<localleader>a', vim.lsp.buf.code_action, desc = 'Code Action' }
-      keys[#keys + 1] = { '<localleader>l', vim.lsp.codelens.run, desc = 'Code Lens' }
-      -- Not all languages support this, so I check how I can enable this
-      -- on specific languages only.
-      -- opts.codelens.enabled = true
-    end,
+    opts = {
+      server = {
+        keys = {
+          { '<localleader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>' },
+          { '<localleader>l', '<cmd>lua vim.lsp.codelens.run()<CR>' },
+        },
+      },
+    },
   },
   {
     'neovim/nvim-lspconfig',
